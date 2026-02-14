@@ -196,15 +196,15 @@
 
         .folder-wrapper.open .salma-2-img {
             opacity: 1;
-            /* Mepet banget ke tengah (overlap) */
-            transform: translateY(-60px) translateX(-5px) scale(0.85) rotate(-5deg);
+            /* Mepet banget ke tengah (overlap) dengan positive translate X */
+            transform: translateY(-60px) translateX(60px) scale(0.9) rotate(-10deg);
             z-index: 35;
         }
 
         .folder-wrapper.open .salma-1-img {
             opacity: 1;
-            /* Mepet banget ke tengah (overlap) */
-            transform: translateY(-60px) translateX(5px) scale(0.85) rotate(5deg);
+            /* Mepet banget ke tengah (overlap) dengan negative translate X */
+            transform: translateY(-60px) translateX(-60px) scale(0.9) rotate(10deg);
             z-index: 35;
         }
 
@@ -251,7 +251,7 @@
     <div class="scene">
         <div class="text-center">
             <!-- Hint Text Baru -->
-            <p id="hint-text" class="text-rose-400 font-medium text-sm tracking-[0.2em] mb-12 uppercase">
+            <p id="hint-text" class="text-rose-400 font-medium text-sm tracking-[0.2em] mb-4 uppercase">
                 Coba di klik dong
             </p>
 
@@ -274,7 +274,9 @@
                     <div class="text-center">
                         <h2 class="text-gray-800 font-romantic text-4xl mb-2">Hi adek,</h2>
                         <p class="text-rose-500 font-romantic text-3xl">happy valentine!</p>
-                        <div class="w-12 h-[2px] bg-rose-100 mx-auto mt-6"></div>
+                        <div class="w-12 h-[2px] bg-rose-100 mx-auto mt-6 mb-2"></div>
+                        <p class="text-rose-300 font-sans text-[10px] tracking-widest font-medium opacity-80">dari biyoo
+                        </p>
                     </div>
                 </div>
 
