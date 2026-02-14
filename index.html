@@ -183,22 +183,25 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Animasi Gambar - Diatur agar tidak menutupi tulisan terlalu parah */
+        /* Animasi Gambar - Diatur agar tidak menutupi tulisan */
         .folder-wrapper.open .chocolate-img {
             opacity: 1;
-            transform: translateY(-120px) scale(1.1) rotate(0deg);
+            transform: translateY(-80px) scale(1) rotate(0deg);
+            /* Diturunin biar gak nutup text */
             z-index: 40;
         }
 
         .folder-wrapper.open .salma-2-img {
             opacity: 1;
-            transform: translateY(-100px) translateX(-60px) scale(0.9) rotate(-15deg);
+            transform: translateY(-70px) translateX(-25px) scale(0.9) rotate(-10deg);
+            /* Lebih rapat ke tengah */
             z-index: 35;
         }
 
         .folder-wrapper.open .salma-1-img {
             opacity: 1;
-            transform: translateY(-100px) translateX(60px) scale(0.9) rotate(15deg);
+            transform: translateY(-70px) translateX(25px) scale(0.9) rotate(10deg);
+            /* Lebih rapat ke tengah */
             z-index: 35;
         }
 
