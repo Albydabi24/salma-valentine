@@ -47,13 +47,14 @@
         /* Folder Wrapper */
         .folder-wrapper {
             position: relative;
-            width: 320px;
-            height: 240px;
+            width: 300px;
+            /* Sedikit dikecilkan untuk mobile safe area */
+            height: 220px;
             cursor: pointer;
             transform-style: preserve-3d;
             transition: transform 0.4s ease;
-            margin-top: 150px;
-            /* Geser ke bawah agar popup tidak kepotong di hp/laptop */
+            margin-top: 20vh;
+            /* Gunakan vh agar fleksibel di berbagai layar */
         }
 
         /* Bagian Belakang Folder (Tab) */
@@ -62,21 +63,10 @@
             inset: 0;
             background-color: var(--folder-color-dark);
             border-radius: 16px;
-            z-index: 1;
+            z-index: 10;
         }
 
-        .folder-back::after {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: 0;
-            width: 90px;
-            height: 30px;
-            background-color: var(--folder-color-dark);
-            border-radius: 12px 12px 0 0;
-        }
-
-        /* Bouquet Wrapper (Container untuk gambar-gambar yang popup) */
+        /* Bouquet Wrapper */
         .bouquet-item {
             position: absolute;
             bottom: 0;
@@ -84,31 +74,32 @@
             pointer-events: none;
             transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-origin: bottom center;
-            /* Mix blend removed to keep original colors */
         }
 
-        /* Cokelat (Tengah - Kuning di request user) */
+        /* Cokelat (Tengah) */
         .chocolate-img {
-            width: 120%;
-            /* Sedikit lebih kecil dari sebelumnya agar proporsional */
-            left: -10%;
-            z-index: 4;
+            width: 100%;
+            left: 0;
+            z-index: 30;
+            /* Paling depan */
             transform: translateY(0) scale(0.6);
         }
 
-        /* Salma 2 (Kiri - Biru di request user) */
+        /* Salma 2 (Kiri) */
         .salma-2-img {
-            width: 90%;
-            left: -50%;
-            z-index: 3;
+            width: 80%;
+            left: -40%;
+            z-index: 29;
+            /* Di depan card, di belakang coklat */
             transform: translateY(0) scale(0.6) rotate(-15deg);
         }
 
-        /* Salma 1 (Kanan - Hijau di request user) */
+        /* Salma 1 (Kanan) */
         .salma-1-img {
-            width: 90%;
-            right: -50%;
-            z-index: 3;
+            width: 80%;
+            right: -40%;
+            z-index: 29;
+            /* Di depan card, di belakang coklat */
             transform: translateY(0) scale(0.6) rotate(15deg);
         }
 
@@ -116,20 +107,25 @@
         .paper {
             position: absolute;
             width: 90%;
-            height: 90%;
+            height: 140%;
+            /* Lebih memanjang ke atas */
             left: 5%;
-            top: 5%;
+            bottom: 5%;
+            /* Anchor ke bawah */
+            top: auto;
             background-color: #ffffff;
             border-radius: 12px;
             padding: 24px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 6;
-            /* Tetap di depan gambar-gambar */
+            z-index: 20;
+            /* DI BELAKANG GAMBAR (User Request) */
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            /* Text start dari atas */
             justify-content: center;
             border-left: 6px solid var(--folder-color);
+            padding-top: 40px;
         }
 
         /* Bagian Depan Folder (Static Face) */
@@ -138,7 +134,8 @@
             inset: 0;
             background-color: var(--folder-color);
             border-radius: 16px;
-            z-index: 10;
+            z-index: 50;
+            /* Paling depan menutup bawah */
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
@@ -176,32 +173,45 @@
 
         .folder-wrapper.open .folder-front {
             transform: translateY(60px);
-            opacity: 0.9;
+            opacity: 1;
         }
 
         .folder-wrapper.open .paper {
-            transform: translateY(-220px) scale(1.05) rotate(0deg);
-            /* Lurusin dikit biar kebaca */
-            z-index: 20;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            transform: translateY(-180px) scale(1) rotate(0deg);
+            z-index: 15;
+            /* Tetap di belakang gambar saat open */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
+        /* Animasi Gambar - Diatur agar tidak menutupi tulisan terlalu parah */
         .folder-wrapper.open .chocolate-img {
             opacity: 1;
-            transform: translateY(-260px) scale(1) rotate(0deg);
-            z-index: 15;
+            transform: translateY(-120px) scale(1.1) rotate(0deg);
+            z-index: 40;
         }
 
         .folder-wrapper.open .salma-2-img {
             opacity: 1;
-            transform: translateY(-230px) translateX(-40px) scale(0.9) rotate(-10deg);
-            z-index: 14;
+            transform: translateY(-100px) translateX(-60px) scale(0.9) rotate(-15deg);
+            z-index: 35;
         }
 
         .folder-wrapper.open .salma-1-img {
             opacity: 1;
-            transform: translateY(-230px) translateX(40px) scale(0.9) rotate(10deg);
-            z-index: 14;
+            transform: translateY(-100px) translateX(60px) scale(0.9) rotate(15deg);
+            z-index: 35;
+        }
+
+        /* Responsiveness untuk iPhone 11 / Mobile */
+        @media (max-width: 480px) {
+            .scene {
+                transform: scale(0.85);
+                /* Kecilkan seluruh scene agar pas */
+            }
+
+            .folder-wrapper {
+                margin-top: 15vh;
+            }
         }
 
         /* Sparkle Canvas */
