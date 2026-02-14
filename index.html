@@ -53,8 +53,8 @@
             cursor: pointer;
             transform-style: preserve-3d;
             transition: transform 0.4s ease;
-            margin-top: 20vh;
-            /* Gunakan vh agar fleksibel di berbagai layar */
+            margin-top: 0px;
+            /* Reset margin wrapper */
         }
 
         /* Bagian Belakang Folder (Tab) */
@@ -196,15 +196,15 @@
 
         .folder-wrapper.open .salma-2-img {
             opacity: 1;
-            /* Mepet banget ke tengah (overlap) dengan positive translate X */
-            transform: translateY(-60px) translateX(60px) scale(0.9) rotate(-10deg);
+            /* SUPER RAPAT / OVERLAP PARAH */
+            transform: translateY(-60px) translateX(90px) scale(0.9) rotate(-10deg);
             z-index: 35;
         }
 
         .folder-wrapper.open .salma-1-img {
             opacity: 1;
-            /* Mepet banget ke tengah (overlap) dengan negative translate X */
-            transform: translateY(-60px) translateX(-60px) scale(0.9) rotate(10deg);
+            /* SUPER RAPAT / OVERLAP PARAH */
+            transform: translateY(-60px) translateX(-90px) scale(0.9) rotate(10deg);
             z-index: 35;
         }
 
@@ -249,9 +249,9 @@
     <canvas id="sparkle-canvas"></canvas>
 
     <div class="scene">
-        <div class="text-center">
+        <div class="text-center" style="margin-top: 20vh;"> <!-- Pindahkan posisi vertikal ke container ini -->
             <!-- Hint Text Baru -->
-            <p id="hint-text" class="text-rose-400 font-medium text-sm tracking-[0.2em] mb-4 uppercase">
+            <p id="hint-text" class="text-rose-400 font-medium text-sm tracking-[0.2em] mb-6 uppercase">
                 Coba di klik dong
             </p>
 
